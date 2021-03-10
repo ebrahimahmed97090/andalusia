@@ -1,0 +1,54 @@
+<div class="content-container">
+
+    <div class="container">
+        <form (ngSubmit)="filterData(f.value)"
+			  #f="ngForm"
+              class="row g-3 d-flex align-items-end mb-5 justify-content-around">
+            <div class="col-auto">
+                <label for="staticEmail2"
+                       class="visually-hidden" i18n>Employee Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="staticEmail2"
+                       name="name"
+                       ngModel
+                       (keyup)="filterData(f.value)">
+            </div>
+            <div class="col-auto">
+                <label for="exampleFormControlSelect1"
+                       class="visually-hidden" i18n>Department</label>
+                <select class="form-control"
+                        id="exampleFormControlSelect1"
+                        name="dept"
+                        ngModel (change)="filterData(f.value)">
+                    <option value="HR" i18n>Human Resources</option>
+                    <option value="IT" i18n>Information Technologies</option>
+                    <option value="Of" i18n>Office</option>
+                    <option value="PR" i18n>Public Relations</option>
+
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit"
+                        class="btn btn-primary" i18n>Search
+                </button>
+            </div>
+        </form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col" i18n>#</th>
+                <th scope="col" i18n>First</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emp of em">
+                <td i18n>{{emp.code}}</td>
+                <td i18n>{{emp.name}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
