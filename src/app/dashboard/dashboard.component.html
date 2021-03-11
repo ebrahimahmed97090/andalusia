@@ -1,4 +1,4 @@
-<div class="content-container">
+<div class="content-container my-5">
 
     <div class="container">
         <form (ngSubmit)="filterData(f.value)"
@@ -15,8 +15,7 @@
                        (keyup)="filterData(f.value)"
                        maxlength="20"
 					   #name="ngModel"
-                       minlength="4"
-                >
+                       minlength="4">
                 <div
                         class="d-inline-block"
                         *ngIf="!name?.valid
@@ -48,19 +47,20 @@
                 </button>
             </div>
         </form>
-        <p class="text-danger font-weight-bold" *ngIf="error">{{error}}</p>
+        <p class="text-danger font-weight-bold"
+           *ngIf="error">{{error}}</p>
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Employee Code</th>
 
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let emp of em">
-                <td>{{emp.code}}</td>
                 <td>{{emp.name}}</td>
+                <td>{{emp.code}}</td>
             </tr>
 
             </tbody>

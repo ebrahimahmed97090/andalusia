@@ -1,6 +1,7 @@
-<div [ngClass]="(cur ==='en')? 'sidebar-container':'sidebar-container-ar'">
+<div class="bg-dark"
+     [ngClass]="(cur ==='en')? 'sidebar-container':'sidebar-container-ar'">
     <ul class="sidebar-navigation">
-        <li class="header">{{'Navigation-Model'|translate}}</li>
+        <li class="header  bg-dark">{{'Navigation-Model'|translate}}</li>
         <li>
             <a routerLink="dashboard">
                 {{'Dash-board'|translate}}

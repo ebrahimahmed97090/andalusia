@@ -21,7 +21,7 @@ export class AddEmployeeComponent implements OnInit {
     // tslint:disable-next-line:triple-equals
     // @ts-ignore
     last = this.employee.employees.length === 0 ? 0 : this.employee.employees[this.employee.employees.length - 1].code;
-    error;
+error;
     cur;
 
     ngOnInit(): void {
@@ -30,8 +30,8 @@ export class AddEmployeeComponent implements OnInit {
     }
 
     add = (frm) => {
-        const form = frm;
-        if (!frm.valid) {
+        const form = frm.value;
+        if (!frm.valid){
             this.error = 'form is invalid';
             return;
         }
@@ -40,8 +40,7 @@ export class AddEmployeeComponent implements OnInit {
                                                this.last,
                                                form.birth,
                                                form.gender));
-        frm.reset();
-        this.error = null;
         this.last++;
+        this.error = null;
     }
 }
