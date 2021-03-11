@@ -1,7 +1,7 @@
 <div class="content-container my-5">
 
     <div class="container">
-        <form (ngSubmit)="filterData(f.value)"
+        <form (ngSubmit)="filterData(f)"
 			  #f="ngForm"
               class="row g-3 d-flex align-items-end mb-5 justify-content-around">
             <div class="col-auto">
@@ -12,7 +12,7 @@
                        id="staticEmail2"
                        name="name"
                        ngModel
-                       (keyup)="filterData(f.value)"
+                       (keyup)="filterData(f)"
                        maxlength="20"
 					   #name="ngModel"
                        minlength="4">
@@ -32,7 +32,7 @@
                         id="exampleFormControlSelect1"
                         name="dept"
                         ngModel
-                        (change)="filterData(f.value)">
+                        (change)="filterData(f)">
                     <option value="HR">{{'Human-Resources'|translate}}</option>
                     <option value="IT">{{'Information-Technologies'|translate}}</option>
                     <option value="Of">{{'Office'|translate}}</option>
