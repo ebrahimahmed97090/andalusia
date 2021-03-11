@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {
-    LOCALE_ID,
+
     NgModule
 } from '@angular/core';
 
@@ -14,6 +14,15 @@ import {
     FormsModule,
     ReactiveFormsModule
 } from '@angular/forms';
+import {
+    TranslateLoader,
+    TranslateModule
+} from '@ngx-translate/core';
+import {
+    HttpClient,
+    HttpClientModule
+} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 @NgModule({
               declarations: [
@@ -26,16 +35,26 @@ import {
               ],
               imports     : [
                   BrowserModule,
+                  HttpClientModule,
                   AppRoutingModule,
                   FormsModule,
-                  ReactiveFormsModule
+                  ReactiveFormsModule,
+                  TranslateModule.forRoot({
+                                              defaultLanguage: 'en',
+                                              loader         : {
+                                                  provide   : TranslateLoader,
+                                                  useFactory : createTranslateLoader,
+                                                  deps      : [HttpClient]
+                                              }
+                                          })
               ],
-              providers   : [
-                  {
-                      provide : LOCALE_ID,
-                      useValue: 'under-c-ar'
-                  }
-              ],
+              providers   : [],
               bootstrap   : [AppComponent]
           })
 export class AppModule {}
+
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http,
+                                   '../assets/i18n/',
+                                   '.json');
+}

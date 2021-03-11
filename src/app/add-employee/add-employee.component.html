@@ -1,51 +1,71 @@
 <div class="content-container">
 
     <div class="container">
-        <form (ngSubmit)="add(f.value)"
+        <form (ngSubmit)="add(f)"
 			  #f="ngForm">
-            <div class='row g-3 d-flex align-items-end mb-5 '>
+            <div class='row g-3 d-flex align-items-end justify-content-around my-5 '>
                 <div class="col-auto">
                     <label for="EmpName"
                            class="visually-hidden"
-                           i18n>Employee Name</label>
+                    >{{'Employee-Name' | translate}}</label>
                     <input type="text"
                            required
                            class="form-control"
                            id="EmpName"
                            ngModel
                            name="name"
+                           maxlength="50"
+						   #name="ngModel"
+                           minlength="4"
+                           pattern="[a-zA-Z ]*"
                     >
+                    <div
+                            class="d-inline-block text-danger font-weight-bold"
+                            *ngIf="!name?.valid
+          && (name?.dirty
+           || name?.touched)">
+                        Invalid Name
+                    </div>
                 </div>
                 <div class="col-auto">
                     <label for="EmpDep"
                            class="visually-hidden"
-                           i18n>Department</label>
+                    >{{'Department'|translate}}</label>
                     <select class="form-control"
                             name="dept"
                             ngModel
                             required
-                            id="EmpDep">
+                            id="EmpDep"
+							#dept="ngModel">
                         <option value="HR"
-                                i18n>Human Resources
+
+                        >{{'Human-Resources'|translate}}
                         </option>
                         <option value="IT"
-                                i18n>Information Technologies
+                        >{{'Information-Technologies'|translate}}
                         </option>
                         <option value="Of"
-                                i18n>Office
+                        >{{'Office'|translate}}
                         </option>
                         <option value="PR"
-                                i18n>Public Relations
+                        >{{'Public-Relations'|translate}}
                         </option>
 
                     </select>
+                    <div
+                            class="d-inline-block  text-danger font-weight-bold"
+                            *ngIf="!dept?.valid
+          && (dept?.dirty
+           || dept?.touched)">
+                        Department is required
+                    </div>
                 </div>
             </div>
-            <div class='row g-3 d-flex align-items-end mb-5 '>
+            <div class='row g-3 d-flex justify-content-around align-items-end my-5 '>
                 <div class="col-auto">
                     <label for="EmpCode"
                            class="visually-hidden"
-                           i18n>Employee code</label>
+                    >{{'Employee-code'|translate}}</label>
                     <input type="text"
                            class="form-control"
                            name="code"
@@ -58,7 +78,7 @@
                 <div class="col-auto">
                     <label for="birthday"
                            class="visually-hidden"
-                           i18n>Birthday</label>
+                    >{{'Birthday'|translate}}</label>
                     <input type="date"
                            name="birth"
                            required
@@ -67,34 +87,42 @@
                            id="birthday">
                 </div>
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input"
-                       type="radio"
-                       required
-                       name="gender"
-                       id="inlineRadio1"
-                       value="male"
-                       ngModel>
-                <label class="form-check-label"
-                       for="inlineRadio1"
-                       i18n>Male</label>
+            <div class="row justify-content-around">
+                <div class="col-auto">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"
+                               type="radio"
+                               required
+                               name="gender"
+                               id="inlineRadio1"
+                               value="male"
+                               ngModel>
+                        <label class="form-check-label"
+                               for="inlineRadio1"
+                        >{{'Male'|translate}}</label>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="gender"
+                               id="inlineRadio2"
+                               required
+                               value="female"
+                               ngModel>
+                        <label class="form-check-label"
+                               for="inlineRadio2"
+                        >{{'Female'|translate}}</label>
+                    </div>
+                </div>
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input"
-                       type="radio"
-                       name="gender"
-                       id="inlineRadio2"
-                       required
-                       value="female"
-                       ngModel>
-                <label class="form-check-label"
-                       for="inlineRadio2"
-                       i18n>Female</label>
-            </div>
-            <div class="col-auto">
+            <p class="text-danger font-weight-bold"
+               *ngIf="error">{{error}}</p>
+            <div class="col-12 text-center my-5">
                 <button type="submit"
                         class="btn btn-primary"
-                        i18n>Add
+                >{{'Add'|translate}}
                 </button>
             </div>
         </form>

@@ -1,5 +1,22 @@
 
 /* You can add global styles to this file, and also import other style files */
-.content-container {
-  padding-left: 220px;
+*{
+  font-family: 'Cairo', sans-serif;
 }
+
+
+html[lang='ar']{
+  .content-container {
+    padding-right: 20vw;
+  }
+  direction: rtl;
+  *{text-align: right
+  }
+}
+html[lang='en']{
+  .content-container {
+    padding-left: 20vw;
+  }
+  direction: ltr;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap');

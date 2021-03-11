@@ -1,7 +1,26 @@
 <!-- As a link -->
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#" i18n>Navbar</a>
+        <a class="navbar-brand"
+           href="#">{{'Navbar'|translate}}</a>
+        <div class="btn-group">
+            <button type="button"
+                    class="btn border dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                {{"lang"| translate}}
+            </button>
+            <div class="dropdown-menu "
+                 [ngClass]="{'dropdown-menu-right': currentLang === 'en'}">
+                <a (click)="changeCurrentLang('en')"
+                   class="dropdown-item"
+                >ENGLISH</a>
+                <a (click)="changeCurrentLang('ar')"
+                   class="dropdown-item"
+                >عربي</a>
+            </div>
+        </div>
     </div>
 </nav>
 

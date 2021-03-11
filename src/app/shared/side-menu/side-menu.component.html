@@ -1,19 +1,19 @@
-<div class="sidebar-container">
+<div [ngClass]="(cur ==='en')? 'sidebar-container':'sidebar-container-ar'">
     <ul class="sidebar-navigation">
-        <li class="header" i18n>Navigation Model</li>
+        <li class="header">{{'Navigation-Model'|translate}}</li>
         <li>
-            <a i18n routerLink="dashboard">
-               Dash board
+            <a routerLink="dashboard">
+                {{'Dash-board'|translate}}
             </a>
         </li>
         <li>
             <a routerLink="add">
-                Add Employee
+                {{'Add-Employee'|translate}}
             </a>
         </li>
         <li>
-            <a i18n href="#">
-                 dummy link
+            <a href="#">
+                {{'dummy-link'|translate}}
             </a>
         </li>
 
