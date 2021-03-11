@@ -31,10 +31,6 @@ export class DashboardComponent implements OnInit {
     filterData = (
         frm
     ) => {
-        if (!frm.valid) {
-            this.error = 'form invalid';
-            return;
-        }
         const form = frm.value;
         this.em = this.emp.employees;
         this.em = this.em.filter((obj) => {
