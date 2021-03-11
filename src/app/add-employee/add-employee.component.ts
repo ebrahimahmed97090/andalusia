@@ -30,8 +30,9 @@ export class AddEmployeeComponent implements OnInit {
     }
 
     add = (frm) => {
-        this.last++;
+
         const form = frm.value;
+        this.last++;
         if (!frm.valid) {
             this.error = 'form is invalid';
             return;
